@@ -48,14 +48,16 @@ abbr,acronym {
 	margin-left: -150px;
 	margin-top: -1px;
 	background: no-repeat url(img/main.png) 0 0;
+    padding-top:20px;
+    padding-bottom:20px;
 }
 
 #pointer {
 	position: absolute;
 	left: 0;
-	top: -18px;
+	top: 1px;
 	width: 40px;
 	height: 37px;
-	background: repeat-x url(img/main.png) 0 -13px;
+	background: repeat-x url(img/main.png) 0 -122px;
 	cursor: default;
 }
