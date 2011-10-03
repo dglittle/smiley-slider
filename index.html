@@ -5,14 +5,39 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Smiley Slider</title>
 		<link rel="stylesheet" href="main.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("#setPosition").click(function (){
+            
+            setPosition($("#amount").val())
+            
+            });
+            $("#getPosition").click(function (){
+            
+                alert (getPosition())
+            
+            });
+            
+             $("body").click(function(e){
+                //alert (e.pageX +', '+ e.pageY);
+            }); 
+   
+            
+        });
+        
+        </script>
 	</head>
 
 	<body>
 		<div id="track">
 			<div id="pointer">
 				<canvas id="canvas" style="position:absolute; left:4px; top:0"></canvas>
+               
 			</div>
+             
 		</div>
+        <button id="setPosition">Set Pos </button><input type="text" id="amount" value="0.5"/><button id="getPosition">Get Pos </button>
 	</body>
 </html>
 
@@ -26,6 +51,7 @@
 	canvas.height = 41;
 	var emotion = 0;
 	var downOffset = 0;
+    var lastPos = 0;
 
 	if (window.addEventListener)
 	/** DOMMouseScroll is for mozilla. */
@@ -46,7 +72,37 @@
 		}
 	}
 	
+    function setPosition(amount)
+    {
+        if (amount > 1)
+        {
+            setPointer(track.clientWidth);
+            return false;
+        }
+        else if (amount < 0)
+        {
+            setPointer(0);
+            return false;
+        }
+        else
+            setPointer(track.clientWidth * amount);
+    
+    }
+    
+    function getPosition()
+    {
+        var pos = Math.round(lastPos/track.clientWidth * 100) / 100
+        
+        if (pos < 0)
+            return 0
+        if (pos > 1)
+            return 1
+        return pos
+    }
+    
+    
 	function setPointer(value) {
+        lastPos = value;
 		var hPW = pointer.clientWidth * 0.5;
 		var left = Math.max(0, Math.min(track.clientWidth, value)) - downOffset;
 		var emotion = left / track.clientWidth;
