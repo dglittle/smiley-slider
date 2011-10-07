@@ -1,9 +1,12 @@
 function SmileySlider(container) {
-    var track = document.getElementById(container);
+    
+    var track = document.createElement('div');
+    track.style.position = "relative"
+    track.style.margin = "0 auto"
     track.style.width = "329px";
     track.style.height = "6px";
     track.style.background = "no-repeat url(img/main.png) 0 0";
-    track.style.padding = "20px 0 20px 0";    
+    track.style.padding = "20px 0px 20px 0px";    
     //create pointer
     myPointer = document.createElement('div');
     myPointer.setAttribute('id', 'pointer');
@@ -22,7 +25,8 @@ function SmileySlider(container) {
     myCanvas.height = 41;
 
     myPointer.appendChild(myCanvas);
-    track.appendChild(myPointer);      
+    track.appendChild(myPointer);
+    container.appendChild(track)    
 
     var canvas = myCanvas;
     var pointer = myPointer;
