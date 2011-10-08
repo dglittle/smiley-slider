@@ -26,7 +26,8 @@ function SmileySlider(container) {
 
     myPointer.appendChild(myCanvas);
     track.appendChild(myPointer);
-    container.appendChild(track)    
+    container.appendChild(track)
+    container.style.margin = "0 10px";    
 
     var canvas = myCanvas;
     var pointer = myPointer;
@@ -91,7 +92,7 @@ function SmileySlider(container) {
             if (pos < 0)
                 return 0
             if (pos > 1)
-                return 1
+               return 1
             return pos
         
         }
@@ -99,15 +100,18 @@ function SmileySlider(container) {
     }
 
     function setPointer(value) {
-       
+    
+        var pos = Math.round(value/track.clientWidth * 100) / 100           
         lastPos = value;
         var hPW = pointer.clientWidth * 0.5;
         var left = Math.max(0, Math.min(track.clientWidth, value)) - downOffset;
         var emotion = left / track.clientWidth;
         drawPointer(canvas, 100, emotion, 0.8);
+        if ((left - hPW) < -21 || (left-hPW) >311)
+            return;
         setProperty(pointer, 'left', left - hPW  + 'px');
         that.callback(that.position());
-        
+                
     }
 
     function deltaHandle(delta) {
