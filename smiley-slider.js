@@ -1,5 +1,7 @@
 
-function SmileySlider(container) {
+function SmileySlider(container, imgSrc) {
+    if (!imgSrc)
+        imgSrc = "smiley-slider.png"
 
     var width = 329
     var height = 37
@@ -19,7 +21,7 @@ function SmileySlider(container) {
     track.style.marginBottom = '-' + track.style.height
     track.style.position = "relative"
     track.style.top = 15 + "px"
-    track.style.background = "url('smiley-slider.png')"
+    track.style.background = "url('" + imgSrc + "')"
     base.appendChild(track)
     
     var head = document.createElement('div')
@@ -28,7 +30,7 @@ function SmileySlider(container) {
     head.style.marginRight = '-' + head.style.width
     head.style.marginBottom = '-' + head.style.height
     head.style.position = "relative"
-    head.style.background = "url('smiley-slider.png') scroll 0px -6px"
+    head.style.background = "url('" + imgSrc + "') scroll 0px -6px"
     base.appendChild(head)
 
     var face = document.createElement('canvas')
