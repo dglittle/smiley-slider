@@ -79,7 +79,9 @@ function SmileySlider(container, imgSrc) {
     }
     
     this.position = position    
-    position(0.5)
+    setTimeout(function () {
+        position(0.5)
+    }, 0)
 
     //////////////////////////////////////////////////////////////
     // mouse
