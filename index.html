@@ -1,30 +1,28 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-        <script type="text/javascript" src="SmileySlider.js"></script>        
-        <script type="text/javascript">
-              var s = ""               
-              function loadSlider()
-              {
-                s = new SmileySlider(document.getElementById("track2"))
-                s.position(function (pos) {
-                })  
-                
-              }
-              
-        </script>
-	</head>
+<html>
+<head>
+<script type="text/javascript" src="smiley-slider.js"></script>        
+<script type="text/javascript">
 
-	<body onload="loadSlider()">
-	
-        <table>
-            <tr>
-                <td>
-                    <div id="track2" style="border:1px solid black"></div>
-                </td>
-            </tr>
-        </table>
-        
-	</body>
+function onLoad() {
+    var s = new SmileySlider(document.getElementById("slider"))
+    
+    s.position(0) // make it sad
+    s.position(1) // make it happy
+    
+    var p = s.position() // get it's position
+    s.position(p / 2) // make it half as happy
+    
+    s.position(function (p) {
+        // do something when it changes
+    })
+}
+      
+</script>
+</head>
+<body onload="onLoad()">
+
+<div id="slider"></div>
+    
+</body>
 </html>
-
 
