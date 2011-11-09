@@ -113,6 +113,37 @@ function SmileySlider(container, imgSrc) {
     }
 
     //////////////////////////////////////////////////////////////
+    // touch
+
+    glass.ontouchstart = function (e) {
+        e.preventDefault()
+        var pos = getRelPos(glass, e.touches[0])
+
+        var grabX = headWidth / 2
+        var headX = positionInt()
+        if (pos.x >= headX && pos.x < headX + headWidth) {
+            grabX = pos.x - headX
+        }
+
+        positionInt(pos.x - grabX)
+
+        var oldMove = document.ontouchmove
+        document.ontouchmove = function (e) {
+            e.preventDefault();
+            var pos = getRelPos(glass, e.touches[0])
+            positionInt(pos.x - grabX)
+        }
+
+        var oldEnd = document.ontouchend;
+        var oldCancel = document.ontouchcancel
+        document.ontouchend = document.ontouchcancel = function (e) {
+            document.ontouchmove = oldMove
+            document.ontouchend = oldEnd
+            document.ontouchcancel = oldCancel;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////
     // core drawing code
     
     const PI180 = Math.PI / 180;
@@ -232,11 +263,11 @@ function SmileySlider(container, imgSrc) {
         return {x : x, y : x}
     }
     
-    function getRelPos(to, event) {
+    function getRelPos(to, positionedObject) {
         var pos = getPos(to)
         return {
-            x : event.pageX - pos.x,
-            y : event.pageY - pos.y
+            x : positionedObject.pageX - pos.x,
+            y : positionedObject.pageY - pos.y
         }
     }
 }
