@@ -263,11 +263,11 @@ function SmileySlider(container, imgSrc) {
         return {x : x, y : x}
     }
     
-    function getRelPos(to, event) {
+    function getRelPos(to, positionedObject) {
         var pos = getPos(to)
         return {
-            x : event.pageX - pos.x,
-            y : event.pageY - pos.y
+            x : positionedObject.pageX - pos.x,
+            y : positionedObject.pageY - pos.y
         }
     }
 }
