@@ -146,8 +146,8 @@ function SmileySlider(container, imgSrc) {
     //////////////////////////////////////////////////////////////
     // core drawing code
     
-    const PI180 = Math.PI / 180;
-    
+    var PI180 = Math.PI / 180;
+	
     function drawFace(canvas, radius, emotion, innerScale) {
         emotion = Math.max(0, Math.min(1, emotion));
         var diam = radius * 2;
@@ -191,8 +191,7 @@ function SmileySlider(container, imgSrc) {
         var pad = mainRadius - innerRadius;
         var diam = innerRadius * 2;
         
-        const PI180 = Math.PI / 180;	
-        const SEGS = 16;
+        var SEGS = 16;
         
         var theta = 360 / SEGS;
         var emoScale = (emotion - 0.5) * 2;
