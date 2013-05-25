@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>smiley-slider</title>
+<style type="text/css">
+
+</style>
+
+<script src="https://rawgithub.com/dglittle/smiley-slider/master/smiley-slider.js"></script>
+<script>
+
+function onLoad() {
+    var overrideImageSrc = "https://rawgithub.com/dglittle/smiley-slider/master/smiley-slider.png"
+    
+    var s = new SmileySlider(document.getElementById("slider"), overrideImageSrc)
+    
+    s.position(0) // make it sad
+    s.position(1) // make it happy
+    
+    var p = s.position() // get it's position
+    s.position(p / 2) // make it half as happy
+    
+    s.position(function (p) {
+        // do something when it changes
+    })
+}
+
+</script>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3118247-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body onload="onLoad()">
+
+<table style="width:329px;margin-left:auto;margin-right:auto">
+    <tr><td><div id="slider" style="margin-top:100px;margin-bottom:100px;"></div></td></tr>
+    <tr><td align="center"><small><a href="https://github.com/dglittle/smiley-slider">source code</a></small></td></tr>
+</table>
+
+</body>
+</html>
+
