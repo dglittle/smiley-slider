@@ -4,13 +4,14 @@
 <meta charset='utf-8'>
 <title>smiley-slider</title>
 <style type="text/css">
-
 </style>
-
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="smiley-slider.js"></script>
 <script>
 
-function onLoad() {
+$(function () {
     var s = new SmileySlider(document.getElementById("slider"))
     
     s.position(0) // make it sad
@@ -22,24 +23,15 @@ function onLoad() {
     s.position(function (p) {
         // do something when it changes
     })
-}
+
+    $.ajax({
+        url : 'http://view-count.herokuapp.com/view/' + encodeURIComponent(location.href),
+        xhrFields : { withCredentials: true },
+        success : function (count) { }
+    })    
+})
 
 </script>
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-3118247-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-</head>
-
-<body onload="onLoad()">
 
 <table style="width:329px;margin-left:auto;margin-right:auto">
     <tr><td><div id="slider" style="margin-top:100px;margin-bottom:100px;"></div></td></tr>
@@ -48,4 +40,3 @@ function onLoad() {
 
 </body>
 </html>
-
