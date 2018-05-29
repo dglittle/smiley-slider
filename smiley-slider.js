@@ -259,7 +259,7 @@ function SmileySlider(container, imgSrc) {
             y += e.offsetTop
             e = e.offsetParent
         }
-        return {x : x, y : x}
+        return {x : x, y : y}
     }
     
     function getRelPos(to, positionedObject) {
